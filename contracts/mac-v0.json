@@ -1,0 +1,16 @@
+{
+  "id": "siliconbadgers.mac.v0",
+  "operand_bits": 8,
+  "accumulator_bits": 32,
+  "signed": true,
+  "overflow": "wrap",
+  "clear_priority": "before_enable",
+  "reset": "asynchronous_active_low",
+  "vector_columns": [
+    "a",
+    "b",
+    "enable",
+    "clear",
+    "expected_acc"
+  ]
+}
