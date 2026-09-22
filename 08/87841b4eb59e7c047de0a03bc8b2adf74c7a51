@@ -1,0 +1,35 @@
+CHARTER.md
+  s_a4fdefbacc4ddc::t_c3722eff28f72b 29,39,41
+contracts/accelerator-boundaries.md
+  s_a4fdefbacc4ddc::t_c3722eff28f72b 1-41
+docs/matrix-cases.csv
+  s_a4fdefbacc4ddc::t_c3722eff28f72b 1-10
+docs/accelerator-diagram.md
+  s_a4fdefbacc4ddc::t_c3722eff28f72b 1-100
+decisions/decision-template.md
+  s_a4fdefbacc4ddc::t_c3722eff28f72b 1-24
+README.md
+  s_a4fdefbacc4ddc::t_c3722eff28f72b 3-6
+docs/workload-cases.md
+  s_a4fdefbacc4ddc::t_c3722eff28f72b 1-54
+.github/CODEOWNERS
+  s_a4fdefbacc4ddc::t_c3722eff28f72b 1-2
+docs/START-HERE.md
+  s_a4fdefbacc4ddc::t_c3722eff28f72b 1-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0887841b4eb59e7c047de0a03bc8b2adf74c7a51",
+  "prompts": {},
+  "sessions": {
+    "s_a4fdefbacc4ddc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0c6c2-231a-7a30-bbf3-f68a9d08902d",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
