@@ -1,5 +1,9 @@
 # Architecture and system direction
 
+## Start here: current investigation packet
+
+Read the [starting guide](docs/START-HERE.md) for the current diagram, source evidence, parallel investigations and first useful outputs.
+
 Help SiliconBadgers make coherent, evidence-based choices about the accelerator it is building. This team connects workload needs, numerical behavior, hardware organization and practical constraints so that separate teams can contribute to a system whose purpose and tradeoffs are understood.
 
 ## Read the charter

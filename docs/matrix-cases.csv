@@ -1,0 +1,10 @@
+tensor,gguf_dtype,ggml_ne0,ggml_ne1,logical_stored_bytes,study
+blk.0.attn_qkv.weight,q5_K,2048,6144,8650752,projection
+blk.0.ssm_alpha.weight,q8_0,2048,16,34816,projection
+blk.0.ffn_gate.weight,q4_K,2048,6144,7077888,projection
+blk.0.ffn_up.weight,q4_K,2048,6144,7077888,projection
+blk.0.ffn_down.weight,q6_K,6144,2048,10321920,projection
+blk.3.attn_q.weight,q4_K,2048,4096,4718592,projection
+blk.3.attn_k.weight,q4_K,2048,512,589824,projection
+blk.3.attn_v.weight,q6_K,2048,512,860160,projection
+token_embd.weight,q6_K,2048,248320,417177600,tied embedding / output head

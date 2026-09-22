@@ -26,7 +26,7 @@ Maintain accessible design explanations and decision rationale so new members ca
 
 ## Boundaries and shared decisions
 
-Architecture stewards shared specifications through discussion with the teams that implement and consume them. Compute, memory, control and SoC teams choose internal implementations within agreed boundaries. ml-models owns numerical references; ml-compiler owns software realization; accelerator maintains combined-system understanding and demonstrations. Architecture proposals become shared commitments through agreement with affected teams, not merely by appearing in this repository.
+Architecture stewards shared specifications through discussion with the teams that implement and consume them. Compute, memory, control and SoC teams choose internal implementations within agreed boundaries. Software owns numerical references, workload mapping and software realization; accelerator maintains combined-system understanding and demonstrations. Architecture proposals become shared commitments through agreement with affected teams, not merely by appearing in this repository.
 
 ## Member autonomy
 
@@ -36,9 +36,9 @@ Members may choose an architectural question, compare competing organizations, e
 
 | Partners | Shared concerns |
 |---|---|
-| ml-models and ml-compiler | Workload characteristics, numerical expectations and programming needs inform the system specification; architecture returns explicit assumptions and shared semantics. |
+| software | Workload characteristics, numerical expectations and programming needs inform the system specification; architecture returns explicit assumptions and shared semantics. |
 | RTL teams | Exchange resource and timing assumptions, interface proposals and feedback from implementation. Treat mismatches as opportunities to revise the shared design. |
-| fpga, physical-design and accelerator | Use platform constraints and measured system behavior to refine architectural claims and the interpretation of results. |
+| soc, physical-design and accelerator | Use platform constraints and measured system behavior to refine architectural claims and the interpretation of results. |
 
 ## Possible directions
 
