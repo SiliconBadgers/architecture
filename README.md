@@ -6,6 +6,14 @@ The [main accelerator diagram](docs/accelerator-diagram.md) is the central refer
 
 Help SiliconBadgers make coherent, evidence-based choices about the accelerator it is building. This team connects workload needs, numerical behavior, hardware organization and practical constraints so that separate teams can contribute to a system whose purpose and tradeoffs are understood.
 
+## Register and descriptor maps
+
+The [two maps from the technical deck](docs/register-maps.md) preserve the proposed
+MMIO registers and 128-byte command descriptor. Top-Level Control will refine
+these in this repository using llama.cpp and Software's evidence, while keeping
+its detailed controller diagram and command walkthrough in
+[rtl-control](https://github.com/SiliconBadgers/rtl-control/issues/2).
+
 ## Read the charter
 
 - [CHARTER.md](CHARTER.md): purpose, responsibilities, boundaries, member autonomy and collaboration.
