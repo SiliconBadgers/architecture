@@ -24,7 +24,7 @@ Keep the shared accelerator diagram, interface proposals and evidence-backed dec
 
 ## Current material and scope
 
-The central diagram and small MAC example exist. The slide maps are available in PR #2. The final accelerator ABI and compute partition are not decided.
+The central diagram and small MAC example exist. The slide maps are preserved in docs/register-maps.md. The final accelerator ABI and compute partition are not decided.
 
 [Shared diagram](https://github.com/SiliconBadgers/architecture/blob/main/docs/accelerator-diagram.md) · [Software evidence](https://github.com/SiliconBadgers/software/tree/main/experiments/llama-cpp/2026-09-22)
 

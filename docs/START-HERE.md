@@ -15,7 +15,7 @@ Keep the shared accelerator diagram, interface proposals and evidence-backed dec
 
 - [Central diagram](https://github.com/SiliconBadgers/architecture/blob/main/docs/accelerator-diagram.md)
 - [Recorded Software profiling package](https://github.com/SiliconBadgers/software/tree/main/experiments/llama-cpp/2026-09-22)
-- [Slide register maps](https://github.com/SiliconBadgers/architecture/blob/codex/register-map-baseline/docs/register-maps.md) (baseline proposed in [architecture PR #2](https://github.com/SiliconBadgers/architecture/pull/2))
+- [Slide register maps](https://github.com/SiliconBadgers/architecture/blob/main/docs/register-maps.md) (preserved slide baseline from [architecture PR #2](https://github.com/SiliconBadgers/architecture/pull/2))
 
 ## Artifact locations
 
@@ -26,7 +26,7 @@ Keep the shared accelerator diagram, interface proposals and evidence-backed dec
 
 ## What runs today
 
-The central diagram and small MAC example exist. The slide maps are available in PR #2. The final accelerator ABI and compute partition are not decided.
+The central diagram and small MAC example exist. The slide maps are preserved in docs/register-maps.md. The final accelerator ABI and compute partition are not decided.
 
 These folders organize the work; they do not complete the issues. Use the
 existing evidence now and publish useful intermediate results. Arrange a team
