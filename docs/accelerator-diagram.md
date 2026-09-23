@@ -62,7 +62,9 @@ several GGUF tensor formats. The four engine boxes remain functional candidates;
 shared matrix/vector primitives may serve more than one box.
 
 The source proposes one command in flight and a 128-byte descriptor in ABI 0.1.
-Those are comparison baselines, not a newly adopted binary interface. Control
+Those are comparison baselines, not a newly adopted binary interface. The
+[register and descriptor maps](register-maps.md) preserve both slide tables for
+Top-Level Control to refine using llama.cpp and the Software evidence. Control
 and Memory will develop their own detailed block diagrams against this shared
 system view; their interfaces should remain explicit proposals during research.
 
