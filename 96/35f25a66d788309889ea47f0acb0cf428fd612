@@ -1,0 +1,16 @@
+docs/accelerator-diagram.md
+  h_88577b387ec62e 65-67
+docs/register-maps.md
+  h_88577b387ec62e 1-136
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9635f25a66d788309889ea47f0acb0cf428fd612",
+  "prompts": {},
+  "humans": {
+    "h_88577b387ec62e": {
+      "author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
