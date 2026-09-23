@@ -1,5 +1,9 @@
 # Architecture and system direction
 
+## Shared block diagram
+
+The [main accelerator diagram](docs/accelerator-diagram.md) is the central reference for all teams. Its four compute boxes are provisional: Compute will research the required units using the Software evidence, while Control and Memory develop detailed diagrams for their respective controllers.
+
 Help SiliconBadgers make coherent, evidence-based choices about the accelerator it is building. This team connects workload needs, numerical behavior, hardware organization and practical constraints so that separate teams can contribute to a system whose purpose and tradeoffs are understood.
 
 ## Read the charter
