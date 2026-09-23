@@ -1,0 +1,23 @@
+docs/accelerator-diagram.md
+  s_a4fdefbacc4ddc::t_3f86e1e39bbf27 65-67
+README.md
+  s_a4fdefbacc4ddc::t_3f86e1e39bbf27 9-16
+docs/register-maps.md
+  s_a4fdefbacc4ddc::t_3f86e1e39bbf27 1-136
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ccc15deddebbe8fb0a5995f602b8277a8e19ec88",
+  "prompts": {},
+  "sessions": {
+    "s_a4fdefbacc4ddc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0c6c2-231a-7a30-bbf3-f68a9d08902d",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
