@@ -1,0 +1,23 @@
+docs/START-HERE.md
+  s_a4fdefbacc4ddc::t_f35fa6ea35ae1d 18,29
+README.md
+  s_a4fdefbacc4ddc::t_f35fa6ea35ae1d 27
+docs/git-ai.md
+  s_a4fdefbacc4ddc::t_f35fa6ea35ae1d 78-84
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9903b29859aacd3a9ae75534b7333381cc9a6a58",
+  "prompts": {},
+  "sessions": {
+    "s_a4fdefbacc4ddc": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0c6c2-231a-7a30-bbf3-f68a9d08902d",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
