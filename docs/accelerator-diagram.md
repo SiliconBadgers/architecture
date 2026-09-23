@@ -2,9 +2,9 @@
 
 Status: proposed architecture for investigation, September 22, 2026. This is an
 editable transcription of the revised slide 9, not implemented RTL or an agreed
-allocation of four independent compute engines. Teams can propose shared
-arithmetic behind these functional boxes. Compute 1 and Compute 2 divide the
-initial investigations, not permanent hardware ownership.
+allocation of four independent compute engines. The Compute team will use this diagram and the Software evidence to research
+which units are actually needed, including opportunities to share arithmetic.
+The four boxes do not prescribe four independent engines.
 
 ```mermaid
 flowchart TB
@@ -62,9 +62,9 @@ several GGUF tensor formats. The four engine boxes remain functional candidates;
 shared matrix/vector primitives may serve more than one box.
 
 The source proposes one command in flight and a 128-byte descriptor in ABI 0.1.
-Those are comparison baselines, not a newly adopted binary interface. See the
-[boundary worksheet](../contracts/accelerator-boundaries.md) before defining RTL
-ports or software layouts.
+Those are comparison baselines, not a newly adopted binary interface. Control
+and Memory will develop their own detailed block diagrams against this shared
+system view; their interfaces should remain explicit proposals during research.
 
 ## Control and state responsibilities
 
@@ -86,9 +86,12 @@ when ports and dependencies permit actual overlap.
 The [llama.cpp report](https://github.com/SiliconBadgers/software/blob/main/experiments/llama-cpp/2026-09-22/REPORT.md)
 motivates testing shared matrix arithmetic, including the output head. CPU time
 shares do not allocate silicon area or establish the best compute split.
-Use the [workload cases](workload-cases.md) and each team's
-[starting material](https://github.com/SiliconBadgers/planning/blob/main/docs/team-start.md)
-to investigate concurrently.
+Use the [Software repository](https://github.com/SiliconBadgers/software) and
+[profiling code and reproduction procedure](https://github.com/SiliconBadgers/software/tree/main/experiments/llama-cpp/2026-09-22)
+to investigate concurrently. Compute researches the required compute units;
+Control focuses on top-level control; Memory focuses on the memory controller.
+All teams should refer to this central diagram instead of maintaining copies
+of the overall architecture in their repositories.
 
 Edit this Mermaid block when the design changes. Include the evidence, affected
 state/interfaces and alternatives in the PR. Architecture maintains this shared

@@ -1,9 +1,5 @@
-# architecture/decisions
+# decisions
 
-Architectural decision rationale, alternatives, assumptions and the perspectives of affected teams.
+Accepted decisions and proposals using decision-template.md, with alternatives, supporting evidence and revisit conditions.
 
-This directory currently contains this structure note. Members can add material when their chosen work needs it.
-
-This is a suggested home for work supporting the [charter](../CHARTER.md) and
-[objectives](../OBJECTIVES.md). The team can reorganize or extend it as its work
-develops. A directory’s presence does not assign a task or require an artifact.
+See [the current assignment](../docs/START-HERE.md).
