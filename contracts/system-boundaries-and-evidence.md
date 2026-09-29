@@ -37,11 +37,11 @@ The [candidate boundary worksheet](accelerator-boundaries.md) records first chec
 
 | Topic | Current status | What remains to be established |
 | --- | --- | --- |
-| Device-side RISC-V | Retained in the working system design | Host/firmware decomposition split, core implementation and firmware interface ([issue #7](https://github.com/SiliconBadgers/architecture/issues/7)) |
+| Device-side RISC-V | Retained in the working system design | Host/firmware decomposition split ([architecture #7](https://github.com/SiliconBadgers/architecture/issues/7)), core integration and firmware interface ([SoC #4](https://github.com/SiliconBadgers/soc/issues/4)) |
 | Matrix and vector functions | Distinct functions in the initial design | Array/lane sizes, reuse and scheduling for prefill and one-token decode; dedicated attention or recurrence arithmetic must earn its cost |
 | Compute-unit exchange | Shared SRAM path in the initial design; no separate compute-to-compute fabric | Useful bandwidth, bank/port conflicts and whether another path helps on the chosen target |
 | Persistent state | KV, recurrent and convolution state must be maintained in request/token order | Local storage, spill policy, initialization, replay and fault invalidation |
-| Numerical formats | Open; parameterized INT4/INT8 RTL may start | FP4 versus integer weights, activation/accumulator/state precision, conversion and model-quality effects |
+| Numerical formats | Open; parameterized INT4/INT8 RTL may start | FP4 versus integer weights, activation/accumulator/state precision, conversion and model-quality effects ([issue #9](https://github.com/SiliconBadgers/architecture/issues/9)) |
 | Command ABI | One command in flight and a 128-byte descriptor are comparison baselines | Acceptance, fields, address and visibility rules, error codes, reset and useful command granularity ([issue #3](https://github.com/SiliconBadgers/architecture/issues/3)) |
 | FPGA and small ASIC | Separate target constraints; a representative-block tape-out is a proposal | Area, memory macros, I/O, packaging, clocking and which block could be tested usefully |
 
