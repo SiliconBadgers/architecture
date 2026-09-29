@@ -1,0 +1,22 @@
+docs/accelerator-diagram.md
+  s_5b555a9f3bd0b8::t_cbf1e996e49af6 9,13-14,16-18,61-65,69-73,86-87
+contracts/system-boundaries-and-evidence.md
+  s_5b555a9f3bd0b8::t_281cc3f07168c8 38-46,48
+  s_5b555a9f3bd0b8::t_cbf1e996e49af6 17,21,27-28,47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "326ef166e8d932af33475abe34d13dd608cf2bb4",
+  "prompts": {},
+  "sessions": {
+    "s_5b555a9f3bd0b8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d977-3795-73c0-aaed-6767eaef473e",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
