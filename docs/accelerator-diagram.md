@@ -6,14 +6,16 @@ allocation of four independent compute engines. The Compute team will use this d
 which units are actually needed, including opportunities to share arithmetic.
 The four boxes do not prescribe four independent engines.
 The [system-boundaries proposal](../contracts/system-boundaries-and-evidence.md)
-records the open CPU-placement choice and the contracts shared across teams.
+records the working RISC-V placement, open command split, and contracts shared across teams.
 
 ```mermaid
 flowchart TB
-  HOST["Host software / firmware on an existing CPU<br/>MMIO, descriptors, doorbell, status and IRQ"]
+  HOST["Application host / runtime<br/>requests, model graph and supported-op lowering"]
+  RV["Device-side RISC-V firmware<br/>device jobs, command submission and completion"]
   CMD["Top-level command controller<br/>IDLE → FETCH → VALIDATE → DISPATCH<br/>EXECUTE → DRAIN → COMPLETE"]
-  HOST -->|submit| CMD
-  CMD -->|completion or error| HOST
+  HOST <-->|jobs / results; decomposition split open| RV
+  RV -->|MMIO, descriptors and doorbell| CMD
+  CMD -->|completion or error| RV
   subgraph GEMM["Matrix / GEMM candidate"]
     GC["Local controller<br/>Clear, fetch, wait<br/>Unpack and MAC; advance K<br/>Store; next M,N tile"]
     GD["Datapath<br/>Weight unpack and scales<br/>MACs and partial sums<br/>Output conversion"]
@@ -56,12 +58,19 @@ not specify port counts, crossbar topology, cycle latency or simultaneous access
 
 ## What changed from the slide
 
-The source labels firmware as RISC-V. Here it is an existing host CPU: no custom
-CPU, ISA or separate compiler team is required, and this drawing does not select
-an ISA. The source's INT4 unpack, FP32 partial sums and BF16 writeback remain
+The working system design retains a small device-side RISC-V core; it does not
+require a custom CPU or ISA. The division of graph decomposition and command
+sequencing between the application host and firmware is still open. The
+accelerator controller decodes commands, not RISC-V instructions. The source's
+INT4 unpack, FP32 partial sums and BF16 writeback remain
 **numerical candidates**, not validated formats. The recorded Q4_K_M model mixes
 several GGUF tensor formats. The four engine boxes remain functional candidates;
 shared matrix/vector primitives may serve more than one box.
+The initial arithmetic plan has distinct matrix and vector functions. Whether
+attention or recurrence needs dedicated arithmetic remains open; persistent
+state handling is required regardless. The current exchange path goes through
+shared SRAM, with no separate compute-to-compute fabric in the initial design.
+Revisit that choice if measured contention or a different target warrants it.
 
 The source proposes one command in flight and a 128-byte descriptor in ABI 0.1.
 Those are comparison baselines, not a newly adopted binary interface. The
@@ -74,7 +83,8 @@ system view; their interfaces should remain explicit proposals during research.
 
 | Boundary | Required design explanation |
 |---|---|
-| Host to command controller | What is accepted, when descriptors become immutable, completion identity, status/IRQ and acknowledgment |
+| Host to RISC-V firmware | Job granularity, graph decomposition, model/request ownership and results |
+| RISC-V firmware to command controller | What is accepted, when descriptors become immutable, completion identity, status/IRQ and acknowledgment |
 | Command to local controller | Start acceptance, owned resources, local progress, result visibility and errors |
 | Compute to memory | Layout, read/write arbitration, backpressure, accepted transactions and buffer release |
 | Transfer to platform | Responses and outstanding traffic; a timeout does not cancel an accepted transfer |

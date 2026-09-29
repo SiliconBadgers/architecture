@@ -14,18 +14,18 @@ The intended integration path is:
 
 1. A model runtime builds operations and identifies tensor shape, format, layout, dependencies, and request state.
 2. A lowering layer groups supported operations into device jobs and retains a CPU fallback for unsupported work.
-3. A software or firmware submitter publishes device-visible descriptors and buffers, orders those writes, and rings a doorbell.
+3. Device-side RISC-V firmware publishes device-visible descriptors and buffers, orders those writes, and rings a doorbell.
 4. The accelerator validates the command, coordinates transfers and engines, and reports terminal completion with a matching sequence identifier.
 5. The runtime observes completion before reusing buffers or advancing dependent work. Stateful commands also need explicit rules for sequence identity, token order, reset, replay, and invalidation after a fault.
 
-The location of the command submitter is **open** ([architecture issue #7](https://github.com/SiliconBadgers/architecture/issues/7)). The current shared diagram depicts software or firmware on an existing CPU. A separate system proposal uses a small device-side RISC-V core between the application host and accelerator. In either option, the CPU executes instructions and the accelerator decodes commands; the controller is not a CPU. The selected placement changes address translation, cache visibility, interrupt routing, and the ownership boundary, so it must be decided in the shared architecture before either implementation is treated as final.
+The working system design retains a small device-side RISC-V core between the application host and accelerator. The CPU executes firmware instructions; the accelerator controller independently decodes commands. [Architecture issue #7](https://github.com/SiliconBadgers/architecture/issues/7) tracks the **open split of graph decomposition and sequencing** between host and firmware, along with command granularity and the exact address, visibility, and interrupt contracts. The earlier shared diagram depicted an existing CPU as the sole submitter; this proposal updates that boundary without selecting a core implementation or final ABI.
 
 ## Contracts to resolve together
 
 | Contract | Questions that must agree across teams |
 | --- | --- |
-| Runtime to submitter | Which graph operations become jobs; supported shapes, formats and fallbacks; dependency and batching policy |
-| Submitter to controller | Register and descriptor fields, address spaces, accepted-doorbell behavior, ordering, completion identity and acknowledgment |
+| Host runtime to RISC-V firmware | Which graph operations become jobs; supported shapes, formats and fallbacks; dependency and batching policy |
+| RISC-V firmware to controller | Register and descriptor fields, address spaces, accepted-doorbell behavior, ordering, completion identity and acknowledgment |
 | Controller to transfer and engines | Start acceptance, resource ownership, backpressure, terminal `done`, error propagation and buffer release |
 | Compute and Memory | Tensor layout, byte strides, bank/port conflicts, accepted transfers, response ordering and output visibility |
 | Persistent request state | KV cache, recurrent state, convolution history and token position; initialization, update order, checkpoint/replay and fault invalidation |
@@ -35,6 +35,16 @@ The [candidate boundary worksheet](accelerator-boundaries.md) records first chec
 
 ## Decision status
 
-One command in flight and a 128-byte descriptor are useful comparison baselines from the slide maps. They are not frozen. Shared versus dedicated matrix, vector, and recurrent arithmetic; local state storage; memory-bank organization; numerical formats; and supported model sizes need measured or modeled comparisons with stated assumptions. A profiler result may motivate such a comparison but should not be presented as a hardware result.
+| Topic | Current status | What remains to be established |
+| --- | --- | --- |
+| Device-side RISC-V | Retained in the working system design | Host/firmware decomposition split, core implementation and firmware interface ([issue #7](https://github.com/SiliconBadgers/architecture/issues/7)) |
+| Matrix and vector functions | Distinct functions in the initial design | Array/lane sizes, reuse and scheduling for prefill and one-token decode; dedicated attention or recurrence arithmetic must earn its cost |
+| Compute-unit exchange | Shared SRAM path in the initial design; no separate compute-to-compute fabric | Useful bandwidth, bank/port conflicts and whether another path helps on the chosen target |
+| Persistent state | KV, recurrent and convolution state must be maintained in request/token order | Local storage, spill policy, initialization, replay and fault invalidation |
+| Numerical formats | Open; parameterized INT4/INT8 RTL may start | FP4 versus integer weights, activation/accumulator/state precision, conversion and model-quality effects |
+| Command ABI | One command in flight and a 128-byte descriptor are comparison baselines | Acceptance, fields, address and visibility rules, error codes, reset and useful command granularity ([issue #3](https://github.com/SiliconBadgers/architecture/issues/3)) |
+| FPGA and small ASIC | Separate target constraints; a representative-block tape-out is a proposal | Area, memory macros, I/O, packaging, clocking and which block could be tested usefully |
+
+The next Software model should include dependent operation chains and stalls, joint compute/memory sweeps, prefill and decode, and local-memory and HBM working sets. CPU traces and preliminary model estimates are inputs to these comparisons, not measured FPGA performance. Memory can specify HBM-to-SRAM transfers and prefetching while its SRAM-to-compute interface is refined with Compute. Verification can develop models and fault/backpressure tests before every datapath parameter is final.
 
 Before RTL interfaces are fixed, the teams need an agreed command acceptance/completion rule, a device-address and visibility model, persistent-state ownership, and a safe fault/reset rule. Array size, lane count, buffer depth, and unit count can remain parameters while those behaviors are specified.
