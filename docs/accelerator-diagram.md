@@ -5,6 +5,8 @@ editable transcription of the revised slide 9, not implemented RTL or an agreed
 allocation of four independent compute engines. The Compute team will use this diagram and the Software evidence to research
 which units are actually needed, including opportunities to share arithmetic.
 The four boxes do not prescribe four independent engines.
+The [system-boundaries proposal](../contracts/system-boundaries-and-evidence.md)
+records the open CPU-placement choice and the contracts shared across teams.
 
 ```mermaid
 flowchart TB
