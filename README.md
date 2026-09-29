@@ -17,6 +17,7 @@ Keep the shared accelerator diagram, interface proposals and evidence-backed dec
 
 | Location | Purpose |
 |---|---|
+| [contracts/system-boundaries-and-evidence.md](contracts/system-boundaries-and-evidence.md) | Shared software-to-hardware path, evidence limits and open system contracts. |
 | [contracts/register-interface/](contracts/register-interface/README.md) | Proposed MMIO/descriptor tables, baseline comparison, source evidence and command examples for architecture#3. Keep the slide baseline unchanged; a proposal is not an accepted ABI. |
 | [decisions/](decisions/README.md) | Accepted decisions and proposals using decision-template.md, with alternatives, supporting evidence and revisit conditions. |
 
