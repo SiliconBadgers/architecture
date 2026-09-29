@@ -18,7 +18,7 @@ The intended integration path is:
 4. The accelerator validates the command, coordinates transfers and engines, and reports terminal completion with a matching sequence identifier.
 5. The runtime observes completion before reusing buffers or advancing dependent work. Stateful commands also need explicit rules for sequence identity, token order, reset, replay, and invalidation after a fault.
 
-The location of the command submitter is **open**. The current shared diagram depicts software or firmware on an existing CPU. A separate system proposal uses a small device-side RISC-V core between the application host and accelerator. In either option, the CPU executes instructions and the accelerator decodes commands; the controller is not a CPU. The selected placement changes address translation, cache visibility, interrupt routing, and the ownership boundary, so it must be decided in the shared architecture before either implementation is treated as final.
+The location of the command submitter is **open** ([architecture issue #7](https://github.com/SiliconBadgers/architecture/issues/7)). The current shared diagram depicts software or firmware on an existing CPU. A separate system proposal uses a small device-side RISC-V core between the application host and accelerator. In either option, the CPU executes instructions and the accelerator decodes commands; the controller is not a CPU. The selected placement changes address translation, cache visibility, interrupt routing, and the ownership boundary, so it must be decided in the shared architecture before either implementation is treated as final.
 
 ## Contracts to resolve together
 
