@@ -1,0 +1,21 @@
+SETUP.md
+  s_5b555a9f3bd0b8::t_1b82ed93050c41 34
+contracts/integration/README.md
+  s_5b555a9f3bd0b8::t_c20804faa99903 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "abc035a97afe10f1ddf879ea5ce1b79af007bfd3",
+  "prompts": {},
+  "sessions": {
+    "s_5b555a9f3bd0b8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d977-3795-73c0-aaed-6767eaef473e",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
