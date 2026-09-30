@@ -1,6 +1,6 @@
 # Provisional integration types
 
-`sb_types_pkg.sv` is the shared command/completion type package for the RTL
+`command_pkg.sv` is the shared command/completion type package for the RTL
 integration experiment. It is a routing subset, not an accepted device ABI.
 ABI 1, error encodings and the vector/state/memory test opcodes are provisional.
 The package contains no datapath implementation and does not replace the

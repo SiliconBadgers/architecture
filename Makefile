@@ -5,3 +5,10 @@ setup:
 doctor: setup
 test:
 	$(PYTHON) -c "import json; c=json.load(open('contracts/mac-v0.json')); assert c['id']=='siliconbadgers.mac.v0'; assert len(c['vector_columns'])==5; print('PASS MAC contract structure (not RTL verification)')"
+
+.PHONY: style format
+style:
+	python3 scripts/check_style.py
+
+format:
+	python3 scripts/check_style.py --fix

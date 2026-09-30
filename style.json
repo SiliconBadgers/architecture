@@ -1,0 +1,8 @@
+{
+  "systemverilog": [
+    "contracts/integration/*.sv"
+  ],
+  "python": [
+    "scripts/check_style.py"
+  ]
+}
