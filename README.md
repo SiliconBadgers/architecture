@@ -30,5 +30,3 @@ The central diagram and small MAC example exist. The slide maps are preserved in
 [CHARTER.md](CHARTER.md) and [OBJECTIVES.md](OBJECTIVES.md) describe the
 longer-term purpose. Current issues and the starting guide specify the work
 assigned now. [SETUP.md](SETUP.md) describes existing example commands and scope.
-
-Shared integration types: [contracts/integration/](contracts/integration/README.md).
