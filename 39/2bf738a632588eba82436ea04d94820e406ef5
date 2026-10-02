@@ -1,0 +1,27 @@
+AGENTS.md
+  s_5b555a9f3bd0b8::t_c7f7dae51856cf 3
+README.md
+  s_5b555a9f3bd0b8::t_30004f4091106b 3
+contracts/system-boundaries-and-evidence.md
+  s_5b555a9f3bd0b8::t_3d4b237389e4d8 34
+docs/START-HERE.md
+  s_5b555a9f3bd0b8::t_897ba2803f9cec 3,11
+docs/register-maps.md
+  s_5b555a9f3bd0b8::t_0c329d93dbd145 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "392bf738a632588eba82436ea04d94820e406ef5",
+  "prompts": {},
+  "sessions": {
+    "s_5b555a9f3bd0b8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d977-3795-73c0-aaed-6767eaef473e",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
