@@ -66,6 +66,16 @@ ax.text(0,-.29,'Batching requires address generators and completion tracking.',t
 fig.text(.08,.03,'Reference: 8 engines × 32 lanes, 300 MHz, 64 KiB scratch/engine, 4-cycle RISC-V issue.\nNo RTL, area, power, instruction traces, or numerical validation. Resource sweeps do not hold area constant.',fontsize=10,color='#555')
 fig.savefig(ROOT/'overview.png',dpi=180)
 
+# Export the same panels separately so their labels remain legible in the report.
+fig.canvas.draw()
+renderer = fig.canvas.get_renderer()
+for ax, name in zip(axs.flat, [
+    'command-granularity', 'memory-bandwidth',
+    'special-function-throughput', 'row-batching',
+]):
+    bounds = ax.get_tightbbox(renderer).transformed(fig.dpi_scale_trans.inverted())
+    fig.savefig(ROOT / f'{name}.png', dpi=180, bbox_inches=bounds.padded(.12))
+
 fig2, ax = plt.subplots(figsize=(11,6))
 fig2.subplots_adjust(top=.77,bottom=.23,left=.10,right=.96)
 fig2.suptitle('Most whole-model time is outside controller dispatch',x=.10,y=.96,ha='left',fontsize=20,weight='bold')
@@ -88,4 +98,4 @@ fig2.savefig(ROOT/'projection.png',dpi=180)
 with PdfPages(ROOT/'charts.pdf') as pdf:
     pdf.savefig(fig);pdf.savefig(fig2)
 plt.close('all')
-print('Rendered overview.png, projection.png, charts.pdf')
+print('Rendered overview.png, four individual panels, projection.png, charts.pdf')
