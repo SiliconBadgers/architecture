@@ -1,6 +1,6 @@
 # Architecture and shared interfaces: current work
 
-Keep the shared accelerator diagram, interface proposals and evidence-backed decisions in one place. Top-Level Control works here on the software-visible contract and in rtl-control on the controller itself.
+Keep the shared accelerator diagram, interface proposals and evidence-backed decisions in one place. Top-Level Control works here on the software-visible contract and in rtl on the controller itself.
 
 ## Assignment
 
@@ -8,7 +8,7 @@ Keep the shared accelerator diagram, interface proposals and evidence-backed dec
 
 1. Preserve the two slide register maps as a baseline. Trace llama.cpp/ggml tensor metadata, operations, submission and synchronization at the Software experiment's pinned revision.
 2. Propose both the MMIO map and descriptor layout with offsets, fields, access/reset semantics, validation, lifetime and visibility rules. Explain every change against the slide baseline with source or controller evidence.
-3. Walk through representative prefill, decode and stateful commands, including completion, errors, reset and safe buffer reuse. Cross-link the controller design in rtl-control.
+3. Walk through representative prefill, decode and stateful commands, including completion, errors, reset and safe buffer reuse. Cross-link the controller design in rtl.
 4. Keep the four compute boxes provisional. Review each Compute team's independent full proposal on its evidence; this scaffold does not choose the final partition.
 
 ## Starting evidence

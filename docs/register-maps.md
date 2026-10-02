@@ -12,7 +12,7 @@ Top-Level Control will refine both maps in **architecture**, using the
 [central block diagram](accelerator-diagram.md), llama.cpp source and
 [Software's profiling evidence](https://github.com/SiliconBadgers/software/tree/main/experiments/llama-cpp/2026-09-22).
 Its detailed controller diagram and command-flow design belong in
-[rtl-control](https://github.com/SiliconBadgers/rtl-control/issues/2).
+[RTL](https://github.com/SiliconBadgers/rtl/issues/6).
 Preserving these tables does not select a custom CPU or ISA, four separate
 compute engines, or a final numerical format.
 

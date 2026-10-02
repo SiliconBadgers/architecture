@@ -31,7 +31,7 @@ The working system design retains a small device-side RISC-V core between the ap
 | Persistent request state | KV cache, recurrent state, convolution history and token position; initialization, update order, checkpoint/replay and fault invalidation |
 | Fault and reset | Stop new issue, drain accepted work, report a terminal outcome, and permit reset only after the agreed quiescence condition |
 
-The [candidate boundary worksheet](accelerator-boundaries.md) records first checks that can use models and stubs. [Architecture issue #3](https://github.com/SiliconBadgers/architecture/issues/3) owns the proposed register/descriptor contract; [Control issue #2](https://github.com/SiliconBadgers/rtl-control/issues/2) owns the controller behavior; [Software issue #3](https://github.com/SiliconBadgers/software/issues/3) owns the workload-to-hardware boundary evidence. These are coupled reviews, not independent final interfaces.
+The [candidate boundary worksheet](accelerator-boundaries.md) records first checks that can use models and stubs. [Architecture issue #3](https://github.com/SiliconBadgers/architecture/issues/3) owns the proposed register/descriptor contract; [Control issue #6](https://github.com/SiliconBadgers/rtl/issues/6) owns the controller behavior; [Software issue #3](https://github.com/SiliconBadgers/software/issues/3) owns the workload-to-hardware boundary evidence. These are coupled reviews, not independent final interfaces.
 
 ## Decision status
 
