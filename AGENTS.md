@@ -1,6 +1,6 @@
 # Working in Architecture and shared interfaces
 
-Keep the shared accelerator diagram, interface proposals and evidence-backed decisions in one place. Top-Level Control works here on the software-visible contract and in rtl-control on the controller itself.
+Keep the shared accelerator diagram, interface proposals and evidence-backed decisions in one place. Top-Level Control works here on the software-visible contract and in rtl on the controller itself.
 
 ## Before editing or committing
 
