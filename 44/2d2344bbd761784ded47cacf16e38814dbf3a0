@@ -1,0 +1,49 @@
+research/2026-10-02-vector-control/run.cjs
+  s_5b555a9f3bd0b8::t_bfeb18487f571a 1-50
+  s_5b555a9f3bd0b8::t_d92a43a86b8e8f 51-291
+research/2026-10-02-vector-control/README.md
+  s_5b555a9f3bd0b8::t_bfeb18487f571a 1-163
+research/README.md
+  s_5b555a9f3bd0b8::t_bfeb18487f571a 5-9
+README.md
+  s_5b555a9f3bd0b8::t_bfeb18487f571a 20
+research/2026-10-02-vector-control/check.cjs
+  s_5b555a9f3bd0b8::t_bfeb18487f571a 1-65
+  s_5b555a9f3bd0b8::t_5970cd48a56dd0 66-131
+research/2026-10-02-vector-control/inputs/README.md
+  s_5b555a9f3bd0b8::t_f411672a31f9ce 1-20
+research/2026-10-02-vector-control/.gitignore
+  s_5b555a9f3bd0b8::t_bfeb18487f571a 1-4
+research/2026-10-02-vector-control/inputs/2B.json
+  s_5b555a9f3bd0b8::t_179a88753a14ca 1-96
+research/2026-10-02-vector-control/inputs/architecture.cjs
+  s_5b555a9f3bd0b8::t_3c248891397cb5 1-54
+research/2026-10-02-vector-control/inputs/engine.js
+  s_5b555a9f3bd0b8::t_af093e94ab97cd 1-213
+research/2026-10-02-vector-control/inputs/graph-data.js
+  s_5b555a9f3bd0b8::t_d0724fbd6f621e 1-2
+research/2026-10-02-vector-control/model.cjs
+  s_5b555a9f3bd0b8::t_c887d1eba4c4be 1-235
+research/2026-10-02-vector-control/plot.py
+  s_5b555a9f3bd0b8::t_9e0079d86cee4e 1-91
+research/2026-10-02-vector-control/requirements.txt
+  s_5b555a9f3bd0b8::t_5cfc88aa8770f3 1
+research/2026-10-02-vector-control/results.json
+  s_5b555a9f3bd0b8::t_99def260d585b7 1-18440
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "442d2344bbd761784ded47cacf16e38814dbf3a0",
+  "prompts": {},
+  "sessions": {
+    "s_5b555a9f3bd0b8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d977-3795-73c0-aaed-6767eaef473e",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "abhinavnandwani <abhu.srt@gmail.com>"
+    }
+  }
+}
