@@ -1,0 +1,19 @@
+decisions/compute-team-decisions.md
+  s_12a31a6401150a::t_21d223e1db243c 12-19,28-30,37-39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e4d6c07bfaa6942659b659434dc1c6fe331d3834",
+  "prompts": {},
+  "sessions": {
+    "s_12a31a6401150a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a12d1a-45e2-7063-8ee8-fcd99fd1b3aa",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "Zeb Taylor <zceboys@gmail.com>"
+    }
+  }
+}
