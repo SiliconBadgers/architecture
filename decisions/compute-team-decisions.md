@@ -9,10 +9,14 @@
   - The vector unit handles element-wise operations, reductions, conversions,
     and activation/normalization kernels.
   - Firmware supplies kernels such as softmax, sigmoid, SiLU, and ReLU.
-  - Planned primitives: add/subtract/multiply, saturating arithmetic, shifts,
-    sum/argmax/max/absolute-max reductions, type conversions, exponent, and
-    square root/reciprocal square root.
-  - See ISA sheet for finalized supported ops & datatypes.
+  - SIMD primitives include arithmetic, shifts, conversions, SUM/MIN/MAX
+    reductions, integer square root, and floating-point exponent and reciprocal
+    square root.
+  - ARGMAX and absolute-max are programs composed from SIMD primitives.
+  - See the [SIMD ISA](https://github.com/SiliconBadgers/rtl/blob/main/docs/simd-isa.md)
+    for the command format and execution rules, and the
+    [signature catalogue](https://github.com/SiliconBadgers/rtl/blob/main/docs/simd-isa-signatures.md)
+    for supported operations and operand types.
 
 - Command sequencing decisions
   - SIMD commands use a fixed 32-bit format.
@@ -21,12 +25,15 @@
   - A local RISC-V core will issue SIMD primitives; the SIMD array has no
     control flow of its own.
 
-- Datatype decisions
+- Datatype decisions (initial implementation direction)
+  - Model-wide numerical validation is tracked in
+    [architecture #9](https://github.com/SiliconBadgers/architecture/issues/9).
   - Weights: signed INT4 or INT8 with block and per-tensor scales.
   - Activations: INT8. Ordinary matrix accumulation: INT32, then requantize to
     INT8.
   - Q/K: INT16 blocks sharing an exponent. Whether these values stay entirely
     inside the vector unit still needs confirmation.
   - Gated DeltaNet decay math: Q8.24 fixed point to preserve small decay terms.
-  - Vector lanes: INT16/INT32 and FP16/FP32. Dequantize, compute in floating
-    point where needed, then requantize.
+  - Vector arithmetic and conversion operand types follow the SIMD signature
+    catalogue. Vector kernels dequantize, compute in floating point where needed,
+    then requantize.
