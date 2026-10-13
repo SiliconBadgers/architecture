@@ -9,7 +9,7 @@ Keep the shared accelerator diagram, interface proposals and evidence-backed dec
 1. Preserve the two slide register maps as a baseline. Trace llama.cpp/ggml tensor metadata, operations, submission and synchronization at the Software experiment's pinned revision.
 2. Propose both the MMIO map and descriptor layout with offsets, fields, access/reset semantics, validation, lifetime and visibility rules. Explain every change against the slide baseline with source or controller evidence.
 3. Walk through representative prefill, decode and stateful commands, including completion, errors, reset and safe buffer reuse. Cross-link the controller design in rtl.
-4. Keep the four compute boxes provisional. Review each Compute team's independent full proposal on its evidence; this scaffold does not choose the final partition.
+4. Use the [compute team decisions](../decisions/compute-team-decisions.md) for the initial matrix/vector direction and unresolved details. The diagram's four compute boxes remain functional candidates, not four required engines.
 
 ## Starting evidence
 
@@ -26,7 +26,7 @@ Keep the shared accelerator diagram, interface proposals and evidence-backed dec
 
 ## What runs today
 
-The central diagram and small MAC example exist. The slide maps are preserved in docs/register-maps.md. The final accelerator ABI and compute partition are not decided.
+The central diagram and small MAC example exist. The slide maps are preserved in docs/register-maps.md. The compute decision record establishes the initial direction; the final accelerator ABI and detailed compute interfaces remain open.
 
 These folders organize the work; they do not complete the issues. Use the
 existing evidence now and publish useful intermediate results. Arrange a team
