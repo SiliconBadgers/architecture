@@ -8,6 +8,13 @@ The four boxes do not prescribe four independent engines.
 The [system-boundaries proposal](../contracts/system-boundaries-and-evidence.md)
 records the working RISC-V placement, open command split, and contracts shared across teams.
 
+Current direction (October 13, 2026): the [compute decision record](../decisions/compute-team-decisions.md)
+specifies the initial matrix/vector functions, stationary-output support, local
+RISC-V SIMD issue and fixed 32-bit SIMD commands. Its provisional numerical
+direction takes precedence over the older slide candidates described below.
+The [open-decision register](../decisions/open-decisions.md) tracks the remaining
+choices without treating these four functional boxes as four required units.
+
 ```mermaid
 flowchart TB
   HOST["Application host / runtime<br/>requests, model graph and supported-op lowering"]
