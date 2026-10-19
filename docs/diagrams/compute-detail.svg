@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1310" viewBox="0 0 1920 1310" role="img" aria-labelledby="title desc">
+<title id="title">SiliconBadgers | matrix and vector detail</title><desc id="desc">Blue = intended wrapper / datapath; green = existing RTL subset. These are functional paths, not fixed lane / port counts.</desc>
+<defs>
+<marker id="data" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#2369b1"/></marker>
+<marker id="control" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#7950a5"/></marker>
+<marker id="rtl" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#087c72"/></marker>
+<marker id="platform" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#a25c08"/></marker>
+</defs>
+<rect width="1920" height="100%" fill="white"/>
+<text x="60" y="55" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#182638" text-anchor="start">SiliconBadgers | matrix and vector detail</text>
+<text x="60" y="91" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#182638" text-anchor="start">Blue = intended wrapper / datapath; green = existing RTL subset. These are functional paths, not fixed lane / port counts.</text>
+<rect x="50" y="150" width="1810" height="425" rx="16" fill="#fbfcfe" stroke="#7f8fa4" stroke-width="2"/>
+<text x="70" y="182" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#7f8fa4" text-anchor="start">Matrix path [A2, R1, M3] — matrix × matrix, matrix × vector, outer products</text>
+<rect x="80" y="245" width="300" height="130" rx="12" fill="#eff6ff" stroke="#2369b1" stroke-width="2" />
+<text x="98" y="277" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#2369b1" text-anchor="start">SRAM read wrapper</text>
+<text x="98" y="308" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#182638" text-anchor="start">Address / layout / sizes</text>
+<text x="98" y="335" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#182638" text-anchor="start">Ready / valid + responses</text>
+<rect x="440" y="245" width="300" height="130" rx="12" fill="#eff6ff" stroke="#2369b1" stroke-width="2" />
+<text x="458" y="277" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#2369b1" text-anchor="start">Input stage / unpack</text>
+<text x="458" y="308" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#182638" text-anchor="start">INT4 / INT8 direction</text>
+<text x="458" y="335" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#182638" text-anchor="start">Block scales: design open</text>
+<rect x="800" y="245" width="300" height="130" rx="12" fill="#e9f7f2" stroke="#087c72" stroke-width="2" />
+<text x="818" y="277" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#087c72" text-anchor="start">PE array: bpu_sa_array</text>
+<text x="818" y="308" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#182638" text-anchor="start">Current: INT8, A-stationary</text>
+<text x="818" y="335" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#182638" text-anchor="start">Parameterized Rows / Cols</text>
+<rect x="1160" y="245" width="300" height="130" rx="12" fill="#eff6ff" stroke="#2369b1" stroke-width="2" />
+<text x="1178" y="277" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#2369b1" text-anchor="start">Accumulate / output stage</text>
+<text x="1178" y="308" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#182638" text-anchor="start">INT32 direction; conversion</text>
+<text x="1178" y="335" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#182638" text-anchor="start">Output-stationary: planned</text>
+<rect x="1520" y="245" width="300" height="130" rx="12" fill="#eff6ff" stroke="#2369b1" stroke-width="2" />
+<text x="1538" y="277" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" fill="#2369b1" text-anchor="start">SRAM write wrapper</text>
+<text x="1538" y="308" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#182638" text-anchor="start">Results / visibility milestone</text>
+<text x="1538" y="335" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#182638" text-anchor="start">Backpressure buffering TBD</text>
+<polyline points="380,310 440,310" fill="none" stroke="#2369b1" stroke-width="3" stroke-linejoin="round" marker-end="url(#data)" />
+<polyline points="740,310 800,310" fill="none" stroke="#2369b1" stroke-width="3" stroke-linejoin="round" marker-end="url(#data)" />
+<polyline points="1100,310 1160,310" fill="none" stroke="#2369b1" stroke-width="3" stroke-linejoin="round" marker-end="url(#data)" />
+<polyline points="1460,310 1520,310" fill="none" stroke="#2369b1" stroke-width="3" stroke-linejoin="round" marker-end="url(#data)" />
+<text x="60" y="435" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#182638" text-anchor="start">Existing RTL: active / shadow A tiles, B skew, signed PE products, sum/carry accumulation, row adder and C deskew.</text>
+<text x="60" y="463" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#182638" text-anchor="start">Current mode_i=1 raises err_mode_o and still computes INT8; it does not implement INT4. No C-ready port: capture every valid result.</text>
+<text x="60" y="491" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#182638" text-anchor="start">Cross-tile accumulation, stationary output, INT4 unpack/scales/requantization and production SRAM/control wrappers remain planned.</text>
+<text x="60" y="519" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#182638" text-anchor="start">Q8.24 DeltaNet decay is an initial numerical direction; serial-product / scale implementation and full-model validation remain open.</text>
+<rect x="50" y="620" width="1810" height="555" rx="16" fill="#fbfcfe" stroke="#7f8fa4" stroke-width="2"/>
+<text x="70" y="652" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#7f8fa4" text-anchor="start">Vector path [A2, R3, M4, M5] — planned SIMD, shared resources, no autonomous SIMD control flow</text>
+<rect x="470" y="690" width="840" height="135" rx="12" fill="#eff6ff" stroke="#2369b1" stroke-width="2" />
+<text x="488" y="722" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#2369b1" text-anchor="start">Vector-local programmable sequencer / micro-op control</text>
+<text x="488" y="753" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#182638" text-anchor="start">Consumes top-level vector work; selects / repeats fixed 32-bit SIMD words</text>
+<text x="488" y="780" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#182638" text-anchor="start">Local RISC-V or lookup scheme remains an option; no second CPU is implemented.</text>
+<text x="488" y="807" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#182638" text-anchor="start">Top-level ↔ vector command / completion protocol is still undefined.</text>
+<polyline points="1150,825 1150,915" fill="none" stroke="#7950a5" stroke-width="3" stroke-linejoin="round" marker-end="url(#control)" />
+<text x="1170" y="864" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#7950a5" text-anchor="start" paint-order="stroke" stroke="white" stroke-width="5" stroke-linejoin="round">32-bit SIMD instructions</text>
+<text x="1170" y="888" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#7950a5" text-anchor="start" paint-order="stroke" stroke="white" stroke-width="5" stroke-linejoin="round">acceptance + diagnostics</text>
+<rect x="80" y="915" width="320" height="140" rx="12" fill="#eff6ff" stroke="#2369b1" stroke-width="2" />
+<text x="98" y="947" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#2369b1" text-anchor="start">SRAM load / store wrapper</text>
+<text x="98" y="978" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#182638" text-anchor="start">Read / write requests</text>
+<text x="98" y="1005" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#182638" text-anchor="start">Address, data, size, responses</text>
+<text x="98" y="1032" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#182638" text-anchor="start">One-bit transpose request</text>
+<rect x="470" y="915" width="390" height="140" rx="12" fill="#eff6ff" stroke="#2369b1" stroke-width="2" />
+<text x="488" y="947" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#2369b1" text-anchor="start">Vector / scalar / predicate files</text>
+<text x="488" y="978" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#182638" text-anchor="start">V0–V7, S0–S7, P0–P7 + VL</text>
+<text x="488" y="1005" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#182638" text-anchor="start">64-bit cells per ISA; lanes TBD</text>
+<text x="488" y="1032" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#182638" text-anchor="start">Physical storage / banking TBD</text>
+<rect x="940" y="915" width="480" height="140" rx="12" fill="#eff6ff" stroke="#2369b1" stroke-width="2" />
+<text x="958" y="947" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#2369b1" text-anchor="start">SIMD arithmetic / shared resources</text>
+<text x="958" y="978" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#182638" text-anchor="start">ALU, products, conversion, reductions</text>
+<text x="958" y="1005" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#182638" text-anchor="start">Nonlinear primitives + LUT values</text>
+<text x="958" y="1032" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#182638" text-anchor="start">F16/F32, integer types per signatures</text>
+<rect x="1510" y="915" width="320" height="140" rx="12" fill="#eff6ff" stroke="#2369b1" stroke-width="2" />
+<text x="1528" y="947" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#2369b1" text-anchor="start">Register writeback</text>
+<text x="1528" y="978" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#182638" text-anchor="start">Same architectural files</text>
+<text x="1528" y="1005" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#182638" text-anchor="start">Masks / VL / diagnostics</text>
+<text x="1528" y="1032" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#182638" text-anchor="start">Store when dependencies allow</text>
+<polyline points="400,985 470,985" fill="none" stroke="#2369b1" stroke-width="3" stroke-linejoin="round" marker-end="url(#data)" />
+<polyline points="860,985 940,985" fill="none" stroke="#2369b1" stroke-width="3" stroke-linejoin="round" marker-end="url(#data)" />
+<polyline points="1420,985 1510,985" fill="none" stroke="#2369b1" stroke-width="3" stroke-linejoin="round" marker-end="url(#data)" />
+<polyline points="1670,1055 1670,1120 240,1120 240,1055" fill="none" stroke="#2369b1" stroke-width="3" stroke-linejoin="round" marker-end="url(#data)" />
+<text x="950" y="1110" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#2369b1" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="5" stroke-linejoin="round">Results return through registers and SRAM wrapper; compute-to-compute exchange uses shared SRAM</text>
+<text x="60" y="1220" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#182638" text-anchor="start">The published ISA has 135 fixed signatures; packed I4, ARGMAX, activation / normalization recipes are programs built from primitives.</text>
+<text x="60" y="1248" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#182638" text-anchor="start">Register naming / cell width are ISA facts; physical lane count, capacity, resource sharing, LUT placement and startup configurability are not frozen.</text>
+<text x="60" y="1276" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#182638" text-anchor="start">Do not infer top-level descriptor width, queue depth, or a production memory protocol from the 32-bit SIMD word.</text>
+</svg>
