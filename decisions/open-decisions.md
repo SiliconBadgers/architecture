@@ -1,6 +1,6 @@
 # Cross-team open decisions and exploration ranges
 
-Status: **register for review**, last checked **2026-10-13 UTC**. This inventory
+Status: **register for review**, initial snapshot checked **2026-10-13 UTC**. This inventory
 responds to [Akanksha's request on architecture #13][request]: keep settled
 choices in the baseline, enumerate the questions teams are exploring, and
 publish ranges Software can model. Adding a row here does **not** approve a
@@ -23,8 +23,8 @@ parameter, assign a person, change an interface, or close the linked work.
 - Team headings identify participants, not newly assigned owners. **Decision authority:
   TBD for every row** until the affected teams confirm one. Existing named contributors are recorded below where explicit; this does not
   reassign their work or make them the sole decision authority.
-- Every row was checked on the date above. Later updates should record a row's
-  own verification date and changed source revision. `N/A` means a behavioral or
+- Rows retain the snapshot date above unless a newer check date and source
+  revision are recorded for that row. `N/A` means a behavioral or
   scope choice rather than a numeric sweep; it does not mean resolved.
 
 ## Baseline to preserve
@@ -82,14 +82,20 @@ system descriptor remain [slide comparison baselines][maps], not a frozen ABI.
 
 ### Memory and transfers: Memory, Compute, Control, SoC
 
+M04–M06 were refreshed on **2026-10-22** against [RTL #18][r18], merged
+October 17 at `6aff5e9ce91bff3229ee16507770049ca643586f`. Their cited interface
+choices are now documented; implementation and integration evidence remain
+separate. Other rows retain the initial snapshot, including T09's unresolved
+reset/quiescence contract.
+
 | ID / status | Question and current constraint/options | Ranges / bounds | Evidence needed and dependent work | Sources |
 |---|---|---|---|---|
 | M01 · Open | What SRAM capacity, bank count, ports, physical row width and per-cycle service are realizable on the target? | Agreed bounds TBD. PR #18's 8 MiB/32 banks/512-byte row and engine's 8 MiB/64 banks are different proposals/assumptions, not a common baseline. E01/E02/E03 are explored ranges. | Macro/BRAM/URAM mapping, clocked access tests, conflicts and Compute feed demand; affects C01/C04, P02. | [RTL #18][r18], [engine][engine], [Compute Oct 10, 28:49][mt-compute], [Software Oct 11, 43:39][mt-software] |
 | M02 · Open | How are activations, weights/scales, partial sums and persistent state placed, reserved, tiled, spilled and prefetched? Can double buffering actually overlap? | Agreed bounds TBD; current engine partition/residency/fusion choices are assumptions (E02). | Liveness and working sets, output-head traffic, port-constrained overlap and target capacity. Required for realistic performance sweeps. | [system][system], [diagram][diagram], [workloads][workloads], [engine][engine] |
 | M03 · Open | What tensor layout, address/stride units, alignment, transpose/bank mapping and data-type-dependent access rules do Compute and SRAM share? | Byte strides in slide baseline; final layout/alignment restrictions TBD. Diagonal banking is a proposal. | Row/column/tail accesses for supported widths, transpose tests and bank conflicts; feeds C02/C05 and M04. | [boundary worksheet][boundaries], [Controller Oct 6, 17:51][mt-control], [RTL #18][r18] |
-| M04 · Proposal | Is a 4096-bit row write mask byte-granular (512 enables) or 64 enables for 8-byte chunks? Which sizes/alignments are supported? | Competing interpretations, not a numeric sweep; agreement TBD. | Reconcile Step 4 and signal definitions in #18; partial-write/tail reference tests. | [RTL #18 review][mask-review] |
-| M05 · Proposal | Does the memory manager submit separately handshaken single beats, or does the SRAM arbiter own a multibeat burst? Where do length, address progression, write data and completion live? | Proposed 512-byte beats; allowable burst range TBD. A 10-bit byte count does not encode the advertised multibeat contract. | Revised metadata/handshake trace and per-beat versus per-burst completion; blocks transfer/controller integration. | [RTL #18 review][burst-review] |
-| M06 · Proposal | How many requests may be outstanding per source, how are repeated source tags matched to responses, and do writes produce response-valid? How does the scoreboard gate dependent requests and safe reuse? | Scoreboard owns hazards (Oct 3); do not reintroduce arbiter RAW/WAR checks. Tags 0–5 identify sources in #18; outstanding limits/ordering agreement TBD. | Define scoreboard ownership, request identity, backpressure, arbitration/fairness and release point; delayed/reordered-response tests. | [RTL #18 review][order-review], [Controller Oct 6, 20:24][mt-control], [Compute Oct 3, 66:58][mt-compute-1003] |
+| M04 · Evidence gap | What implementation/reference evidence demonstrates the documented byte enables, partial writes and alignment behavior? The merged contract specifies 512 byte enables for a 4096-bit row; the earlier 64-versus-512 ambiguity is resolved in the document. | Memory Manager: row-aligned 512-byte writes. Matrix: row-aligned writes of 1–512 bytes from the row start. Vector lane i: a 128-byte-aligned slice with address bits [8:7] equal to i. These are documented interface limits, not new sweep bounds. | Partial-write/tail and lane-slice reference tests, plus the documented misalignment/zero-size behavior and assertions; integrate with M03/C05. A merged specification is not evidence of working RTL. | Checked 2026-10-22: [merged §4.1][sram-write-contract]; historical [review][mask-review]. |
+| M05 · Open / evidence gap | What Memory Manager burst limits and integration evidence support the documented beat contract? The Memory Manager owns bursts, advances addresses by 512 bytes and supplies each write-data beat; the arbiter accepts separately handshaken 512-byte beats with no burst state or burst-length port. | Completion is per beat; Memory Manager and scoreboard count beats to complete a burst. The 10-bit size field describes one row, not a burst. Memory Manager burst bounds remain TBD. | Back-to-back and stalled-beat traces, address/write-data progression and read/write completion accounting; transfer/controller integration evidence. Burst ownership is documented and need not be reopened. | Checked 2026-10-22: [merged §4.2][sram-burst-contract]; historical [review][burst-review]. |
+| M06 · Open / evidence gap | What source/scoreboard capacity and integration evidence satisfy the documented ordering and dependency contract? Tags 0–5 identify sources; the fixed-latency SRAM returns accepted requests in order, with repeated tags matched by per-source, per-kind order. Engine response-valid pulses for reads only; writes complete through the scoreboard. | At most one request accepted per cycle. The arbiter imposes no outstanding-request limit; each source must bound reads by its ability to absorb responses without backpressure. Source capacities and arbitration/fairness evidence remain TBD. | Verify repeated-tag accounting, capture of every response/completion pulse, and scoreboard RAW/WAR/WAW gating using completion rather than issue order. Write-source buffers may be reused after acceptance; SRAM visibility/reuse follows completion. Test those distinct lifetimes and keep reset/quiescence under T09. | Checked 2026-10-22: [merged §§4.3–4.4][sram-order-contract]; historical [review][order-review], [Controller Oct 6, 20:24][mt-control], [Compute Oct 3, 66:58][mt-compute-1003]. |
 | M07 · Open | What HBM-to-SRAM command, queue/outstanding model, prefetch policy and integration with the arbiter are needed? What is DMA's architectural role and verification boundary? | Agreed bounds TBD; `dma.count=2`, 64 bytes/cycle are engine assumptions. | Command format plus arbiter/SRAM I/O; accepted-request accounting and integration tests. | [Controller Oct 6, 43:12/49:12/58:25][mt-control], [Verification Oct 12, 23:09][mt-verification], [engine][engine] |
 | M08 · Evidence gap | What sustained HBM/DDR and SRAM bandwidth, latency and conflict/response behavior should replace model inputs, and how should HBM IP be validated before/after FPGA access? | Agreed bounds TBD; 460 GB/s × 0.7 in the engine is an assumption, not a measurement. | IP access, simulation and hardware read/write tests; record measured target/clock/traffic. The pre-FPGA versus on-FPGA validation approach remains open. | [engine][engine], [Compute Oct 10, 49:03][mt-compute], [Tech Sync Oct 12, 12:36][mt-sync] |
 | M09 · Open | Would direct weight streaming or compute forwarding be worth adding to the shared-SRAM path? | Initial path remains shared SRAM. `via_l1`/`direct` are model alternatives; forwarding is a stretch proposal, bounds TBD. | Size added buffering/conversion/FIFOs and compare contention, traffic and area; no separate fabric is approved here. | [system][system], [Controller Oct 6, 10:24][mt-control], [engine][engine] |
@@ -289,6 +295,9 @@ owner/bounds fields are deliberate gaps to resolve, not invented defaults.
 [mask-review]: https://github.com/SiliconBadgers/rtl/pull/18#discussion_r4251803644
 [burst-review]: https://github.com/SiliconBadgers/rtl/pull/18#discussion_r4251803651
 [order-review]: https://github.com/SiliconBadgers/rtl/pull/18#discussion_r4251803661
+[sram-write-contract]: https://github.com/SiliconBadgers/rtl/blob/6aff5e9ce91bff3229ee16507770049ca643586f/docs/memory/sram_arbiter_io_scheme.md#41-write-enables-size-and-alignment
+[sram-burst-contract]: https://github.com/SiliconBadgers/rtl/blob/6aff5e9ce91bff3229ee16507770049ca643586f/docs/memory/sram_arbiter_io_scheme.md#42-memory-manager-bursts
+[sram-order-contract]: https://github.com/SiliconBadgers/rtl/blob/6aff5e9ce91bff3229ee16507770049ca643586f/docs/memory/sram_arbiter_io_scheme.md#43-outstanding-requests-and-response-ordering
 [vector-study]: https://github.com/SiliconBadgers/architecture/blob/2ea76238ed55e7d562ec28bbbd3d289eb5546d97/research/2026-10-02-vector-control/README.md
 [vector-run]: https://github.com/SiliconBadgers/architecture/blob/2ea76238ed55e7d562ec28bbbd3d289eb5546d97/research/2026-10-02-vector-control/run.cjs
 [engine]: https://github.com/SiliconBadgers/software/blob/0e06023d74c06cc12bb9e05d9e65102347ecc3f0/engine/docs/ASSUMPTIONS.md
