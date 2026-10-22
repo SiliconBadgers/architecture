@@ -60,9 +60,12 @@ redesign and production SRAM/control wrappers remain planned [R1].
 The vector path is SRAM load/store wrapper → register files → shared SIMD
 arithmetic/reduction/nonlinear resources → register writeback → SRAM.
 A **logical vector-local programmable sequencer** selects and repeats
-micro-operations. A local RISC-V or lookup/program-storage scheme is an option;
-the diagram does not claim a second CPU. Top-level ↔ vector protocol remains
-undefined in the October 18 notes [M5]. Startup configurability is only an option.
+micro-operations. The recorded compute team decision selects a local RISC-V
+core to issue SIMD primitives [A2]. Lookup/program-storage-based sequencing is
+an alternative proposal that would require an explicit change to that decision.
+The diagram does not claim an implemented second CPU. Top-level ↔ vector protocol
+remains undefined in the October 18 notes [M5]. Startup configurability is only
+an option.
 
 The published ISA defines fixed 32-bit little-endian instructions, 135 signatures,
 V0–V7, S0–S7, P0–P7, 64-bit cells and active `VL` [R3]. F16/F32 and integer
@@ -125,7 +128,7 @@ no inaccessible recording or denied slide was used as evidence.
 | ID | Source and claim |
 |---|---|
 | A1 | [System boundaries at architecture baseline][a1]: on-device RISC-V, shared SRAM, state, host split and open platform contracts. |
-| A2 | [Merged compute decisions][a2]: matrix/vector organization, stationary-output direction, vector kernels and initial numerical direction. |
+| A2 | [Merged compute decisions][a2]: matrix/vector organization, stationary-output direction, local RISC-V issue of SIMD primitives, vector kernels and initial numerical direction. |
 | R1 | [Matrix Unit I/O][r1], [array RTL][array]: implemented INT8 datapath versus planned wrappers/extensions. |
 | R2 | [Merged SRAM arbiter I/O scheme][r2]: requests, transpose, size, tags, response order and scoreboard visibility. |
 | R3 | [32-bit SIMD ISA][r3], [signature catalogue][signatures]: exact instruction, register and numerical semantics. |

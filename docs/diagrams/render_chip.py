@@ -422,8 +422,8 @@ def compute():
         "Vector-local programmable sequencer / micro-op control",
         [
             "Consumes top-level vector work; selects / repeats fixed 32-bit SIMD words",
-            "Local RISC-V or lookup scheme remains an option; no second CPU is implemented.",
-            "Top-level ↔ vector command / completion protocol is still undefined.",
+            "Local RISC-V is the recorded direction [A2]; lookup is only a proposal.",
+            "No vector-local CPU implemented; command / completion protocol TBD.",
         ],
         size=21,
     )

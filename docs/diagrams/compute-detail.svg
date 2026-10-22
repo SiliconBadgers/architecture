@@ -44,8 +44,8 @@
 <rect x="470" y="690" width="840" height="135" rx="12" fill="#eff6ff" stroke="#2369b1" stroke-width="2" />
 <text x="488" y="722" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#2369b1" text-anchor="start">Vector-local programmable sequencer / micro-op control</text>
 <text x="488" y="753" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#182638" text-anchor="start">Consumes top-level vector work; selects / repeats fixed 32-bit SIMD words</text>
-<text x="488" y="780" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#182638" text-anchor="start">Local RISC-V or lookup scheme remains an option; no second CPU is implemented.</text>
-<text x="488" y="807" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#182638" text-anchor="start">Top-level ↔ vector command / completion protocol is still undefined.</text>
+<text x="488" y="780" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#182638" text-anchor="start">Local RISC-V is the recorded direction [A2]; lookup is only a proposal.</text>
+<text x="488" y="807" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="400" fill="#182638" text-anchor="start">No vector-local CPU implemented; command / completion protocol TBD.</text>
 <polyline points="1150,825 1150,915" fill="none" stroke="#7950a5" stroke-width="3" stroke-linejoin="round" marker-end="url(#control)" />
 <text x="1170" y="864" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#7950a5" text-anchor="start" paint-order="stroke" stroke="white" stroke-width="5" stroke-linejoin="round">32-bit SIMD instructions</text>
 <text x="1170" y="888" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#7950a5" text-anchor="start" paint-order="stroke" stroke="white" stroke-width="5" stroke-linejoin="round">acceptance + diagnostics</text>
