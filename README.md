@@ -24,7 +24,7 @@ Keep the shared accelerator diagram, interface proposals and evidence-backed dec
 
 ## Current material and scope
 
-The central diagram and small MAC example exist. The slide maps are preserved in docs/register-maps.md. [Compute team decisions](decisions/compute-team-decisions.md) record the initial matrix/vector organization, command control, and numerical direction. The final accelerator ABI and detailed compute interfaces remain open.
+The [whole-chip diagram](docs/accelerator-diagram.md) records the matrix/vector/memory direction through October 18, with separate compute detail and current RTL/simulation hierarchy. Editable sources, SVGs, PNGs and source revisions are included. The slide maps are preserved in docs/register-maps.md. [Compute team decisions](decisions/compute-team-decisions.md) record the initial numerical and control direction. The final accelerator ABI and detailed compute interfaces remain open.
 
 [Shared diagram](https://github.com/SiliconBadgers/architecture/blob/main/docs/accelerator-diagram.md) · [Software evidence](https://github.com/SiliconBadgers/software/tree/main/experiments/llama-cpp/2026-09-22)
 
