@@ -7,6 +7,10 @@ It records intended architecture alongside the smaller implemented RTL subset;
 it does not declare a production top, frozen ABI or physical implementation.
 Related work: [#8][issue8], [#3][issue3], [#7][issue7] and [#9][issue9].
 
+The [open-decision register](../decisions/open-decisions.md) tracks unresolved
+contracts and exploration ranges alongside this diagram. Its dated entries do
+not approve new interfaces or parameter values.
+
 ## Whole-chip view
 
 ![Whole-chip logical architecture](diagrams/whole-chip.svg)
@@ -115,7 +119,7 @@ they were not rerun for this documentation change.
 | Completion / ordering | [R2] uses source tags plus per-source acceptance order, read-response pulses with **no response backpressure**, and read/write completion pulses to the scoreboard. Writes become visible at write completion. Acceptance alone does not resolve RAW/WAR/WAW. Consumers must bound outstanding reads to response capacity. |
 | Compute / numerics | Matrix dimensions, vector lanes, physical register capacity, buffers, scales, conversion and state precision remain parameters/open decisions. Current INT8 array behavior is narrower than the numerical direction [R1, A2, issue #9]. |
 | Platform / clocks | FPGA-first direction; F2/HBM is a study boundary, not a selected board or production binding. Clock/reset domains, CDC, frequencies, macros, physical I/O and packaging are not frozen. The harness's shared `clk_i` / `rst_ni` does not settle production reset/drain semantics with outstanding traffic [A1, M6]. |
-| Other proposals | [Architecture PR #14][arch14] is an open-decision inventory, not an approval. [Software PR #22][sw22] estimates logical bytes; its 8/32/64 B-per-cycle SRAM scenarios are proposals, not measured bandwidth or selected port widths. |
+| Other proposals | [Open-decision register](../decisions/open-decisions.md) inventories remaining choices without approving them. [Software PR #22][sw22] estimates logical bytes; its 8/32/64 B-per-cycle SRAM scenarios are proposals, not measured bandwidth or selected port widths. |
 
 ## Source-of-truth index
 

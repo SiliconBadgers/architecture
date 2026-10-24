@@ -7,9 +7,9 @@ SVG generation uses only the standard library; --svg-only skips PNG rendering.
 from __future__ import annotations
 
 import argparse
+import xml.etree.ElementTree as ET
 from html import escape
 from pathlib import Path
-import xml.etree.ElementTree as ET
 
 OUT = Path(__file__).resolve().parent
 INK = "#182638"

@@ -22,6 +22,13 @@ Keep the shared accelerator diagram, interface proposals and evidence-backed dec
 | [contracts/register-interface/](contracts/register-interface/README.md) | Proposed MMIO/descriptor tables, baseline comparison, source evidence and command examples for architecture#3. Keep the slide baseline unchanged; a proposal is not an accepted ABI. |
 | [decisions/](decisions/README.md) | Accepted decisions and proposals using decision-template.md, with alternatives, supporting evidence and revisit conditions. |
 
+## Open decisions
+
+See the [cross-team open-decision register](decisions/open-decisions.md) for
+source-backed unresolved questions, existing exploratory sweep ranges, dependencies,
+and explicit TBDs. It preserves the current compute direction and does not approve
+new hardware parameters.
+
 ## Current material and scope
 
 The [whole-chip diagram](docs/accelerator-diagram.md) records the matrix/vector/memory direction through October 18, with separate compute detail and current RTL/simulation hierarchy. Editable sources, SVGs, PNGs and source revisions are included. The slide maps are preserved in docs/register-maps.md. [Compute team decisions](decisions/compute-team-decisions.md) record the initial numerical and control direction. The final accelerator ABI and detailed compute interfaces remain open.

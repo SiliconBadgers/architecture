@@ -11,6 +11,9 @@ Keep the shared accelerator diagram, interface proposals and evidence-backed dec
 3. Walk through representative prefill, decode and stateful commands, including completion, errors, reset and safe buffer reuse. Cross-link the controller design in rtl.
 4. Use the [compute team decisions](../decisions/compute-team-decisions.md) and [whole-chip diagram](accelerator-diagram.md) for the matrix/vector/memory direction and unresolved details. The September four-box baseline is preserved separately; it does not prescribe four independent engines.
 
+Use the [open-decision register](../decisions/open-decisions.md) to track unresolved
+shared contracts and team exploration ranges alongside the initial decisions.
+
 ## Starting evidence
 
 - [Central diagram](https://github.com/SiliconBadgers/architecture/blob/main/docs/accelerator-diagram.md)
