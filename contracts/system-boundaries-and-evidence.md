@@ -2,6 +2,15 @@
 
 Status: architecture proposal for review, September 2026. This document defines the questions shared by Software, SoC, Control, Compute, and Memory. It does not freeze an accelerator ABI or choose a final compute partition.
 
+## Current decision record (October 13, 2026)
+
+The [compute team decisions](../decisions/compute-team-decisions.md) now record
+the initial matrix/vector organization, stationary-output support, local RISC-V
+SIMD issue, fixed 32-bit SIMD commands, and provisional numerical direction.
+Use the [open-decision register](../decisions/open-decisions.md) for unresolved
+details and sweep provenance. The September proposal below remains useful
+boundary context; it is not evidence that those recorded choices are undecided.
+
 ## Workload and evidence
 
 The initial workload is Qwen3.5-2B inference, including prompt processing and token-by-token generation. Its hybrid layers require dense matrix operations, attention with a KV cache, and recurrent and convolution state that persists across tokens. The [recorded llama.cpp experiment](https://github.com/SiliconBadgers/software/tree/main/experiments/llama-cpp/2026-09-22) and the [profiling extension under review](https://github.com/SiliconBadgers/software/pull/7) provide CPU timings, operation shapes, and graph observations. CPU time shares and graph structure identify work to investigate; they do not measure FPGA throughput, useful memory bandwidth, bank conflicts, or the area of a hardware partition.
@@ -41,7 +50,7 @@ The [candidate boundary worksheet](accelerator-boundaries.md) records first chec
 | Matrix and vector functions | Distinct functions in the initial design | Array/lane sizes, reuse and scheduling for prefill and one-token decode; dedicated attention or recurrence arithmetic must earn its cost |
 | Compute-unit exchange | Shared SRAM path in the initial design; no separate compute-to-compute fabric | Useful bandwidth, bank/port conflicts and whether another path helps on the chosen target |
 | Persistent state | KV, recurrent and convolution state must be maintained in request/token order | Local storage, spill policy, initialization, replay and fault invalidation |
-| Numerical formats | Open; parameterized INT4/INT8 RTL may start | FP4 versus integer weights, activation/accumulator/state precision, conversion and model-quality effects ([issue #9](https://github.com/SiliconBadgers/architecture/issues/9)) |
+| Numerical formats | Initial INT4/INT8 weights, INT8 activations, INT32 ordinary matrix accumulation, Q/K INT16 blocks and Q8.24 decay direction in [compute decisions](../decisions/compute-team-decisions.md) | Model-wide validation, exact scale/conversion semantics, Q/K placement and remaining state precision ([issue #9](https://github.com/SiliconBadgers/architecture/issues/9)); older FP4/BF16/FP32 candidates are not a replacement for this direction |
 | Command ABI | One command in flight and a 128-byte descriptor are comparison baselines | Acceptance, fields, address and visibility rules, error codes, reset and useful command granularity ([issue #3](https://github.com/SiliconBadgers/architecture/issues/3)) |
 | FPGA and small ASIC | Separate target constraints; a representative-block tape-out is a proposal | Area, memory macros, I/O, packaging, clocking and which block could be tested usefully |
 
